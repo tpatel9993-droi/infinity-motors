@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Motors | Premium Second-Hand Cars</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styling - Premium & Minimalist Theme */
+        :root {
+            --bg-color: #050505;
+            --surface-color: #121212;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-gold: #d4af37;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(5, 5, 5, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+            font-size: 32px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            background-color: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 10px 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--bg-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://placehold.co/1920x600/050505/d4af37?text=Infinity+Motors') center/cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+        }
+
+        /* Buying Section (Car Grid) */
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .car-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .car-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .car-info {
+            padding: 20px;
+        }
+
+        .car-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .car-details {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .car-price {
+            font-size: 22px;
+            color: var(--accent-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Selling Section */
+        .sell-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--surface-color);
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* Login Overlay for Sell Section */
+        .login-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Modal (Login/Signup) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--surface-color);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--accent-gold);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .close-btn:hover { color: var(--accent-gold); }
+
+        .auth-toggle {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .auth-toggle span {
+            color: var(--accent-gold);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo"><span>&infin;</span> Infinity Motors</a>
+        <nav>
+            <ul>
+                <li><a href="#buy">Buy</a></li>
+                <li><a href="#sell">Sell</a></li>
+                <li><button class="btn" onclick="openModal()">Login / Sign Up</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Excellence In Motion</h1>
+        <p>Curated premium and luxury second-hand vehicles for those who demand the extraordinary.</p>
+    </section>
+
+    <section id="buy">
+        <h2 class="section-title">The Collection</h2>
+        <div class="car-grid" id="car-grid">
+            </div>
+    </section>
+
+    <section id="sell">
+        <h2 class="section-title">Sell Your Premium Vehicle</h2>
+        <div class="sell-container">
+            
+            <div class="login-overlay" id="sellOverlay">
+                <h3 style="margin-bottom: 15px; font-size: 24px;">Authentication Required</h3>
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">You must create an account or log in to list a vehicle.</p>
+                <button class="btn" onclick="openModal()">Login / Sign Up</button>
+            </div>
+
+            <form onsubmit="event.preventDefault(); alert('Vehicle listed successfully!');">
+                <div class="form-group">
+                    <label>Brand & Model</label>
+                    <input type="text" placeholder="e.g., Mercedes-Benz S-Class S 580" required>
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <label>Year of Manufacture</label>
+                        <input type="number" placeholder="2022" required>
+                    </div>
+                    <div>
+                        <label>Kilometers Driven</label>
+                        <input type="number" placeholder="15000" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Condition</label>
+                    <select required>
+                        <option value="excellent">Excellent (Like New)</option>
+                        <option value="good">Good (Minor wear)</option>
+                        <option value="fair">Fair (Visible wear)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Expected Price (USD)</label>
+                    <input type="number" placeholder="125000" required>
+                </div>
+                <div class="form-group">
+                    <label>Upload High-Res Image</label>
+                    <input type="file" accept="image/*" required style="padding: 9px;">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Submit Listing</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="margin-bottom: 25px; color: var(--accent-gold);">Login</h2>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="client@infinity.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;" id="modalBtn">Access Account</button>
+            </form>
+            
+            <div class="auth-toggle">
+                <p id="toggleText">Don't have an account? <span onclick="toggleAuthMode()">Sign up here</span></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Infinity Motors. All rights reserved. Elegance pre-owned.</p>
+    </footer>
+
+    <script>
+        // Data for the 10 Premium Cars
+        const cars = [
+            { name: "Rolls-Royce Phantom", km: "12,500", state: "Excellent", price: "$350,000" },
+            { name: "BMW M5 Competition", km: "22,000", state: "Good", price: "$95,000" },
+            { name: "Mercedes-AMG G 63", km: "18,000", state: "Excellent", price: "$180,000" },
+            { name: "Audi RS7 Sportback", km: "30,000", state: "Good", price: "$90,000" },
+            { name: "Porsche 911 Turbo S", km: "15,000", state: "Excellent", price: "$210,000" },
+            { name: "Bentley Continental GT", km: "25,000", state: "Excellent", price: "$160,000" },
+            { name: "Aston Martin DB11", km: "10,000", state: "Excellent", price: "$175,000" },
+            { name: "Range Rover Autobiography", km: "40,000", state: "Good", price: "$110,000" },
+            { name: "Mercedes-Benz S 580", km: "15,000", state: "Excellent", price: "$125,000" },
+            { name: "McLaren 720S", km: "8,000", state: "Excellent", price: "$260,000" }
+        ];
+
+        // Populate Car Grid
+        const grid = document.getElementById('car-grid');
+        cars.forEach(car => {
+            // Using a sleek placeholder that matches the aesthetic in place of actual image files
+            const formattedName = car.name.replace(/\s+/g, '+');
+            const imgUrl = `https://placehold.co/600x400/1a1a1a/d4af37?text=${formattedName}`;
+            
+            const card = document.createElement('div');
+            card.className = 'car-card';
+            card.onclick = () => alert(`Opening details for ${car.name}...`);
+            card.innerHTML = `
+                <img src="${imgUrl}" alt="${car.name}" class="car-img">
+                <div class="car-info">
+                    <h3 class="car-title">${car.name}</h3>
+                    <div class="car-details">
+                        <span>${car.km} km</span>
+                        <span>${car.state}</span>
+                    </div>
+                    <div class="car-price">${car.price}</div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Modal Logic
+        const modal = document.getElementById('authModal');
+        let isLoginMode = true;
+
+        function openModal() {
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function toggleAuthMode() {
+            isLoginMode = !isLoginMode;
+            document.getElementById('modalTitle').innerText = isLoginMode ? 'Login' : 'Create Account';
+            document.getElementById('modalBtn').innerText = isLoginMode ? 'Access Account' : 'Register';
+            document.getElementById('toggleText').innerHTML = isLoginMode 
+                ? `Don't have an account? <span onclick="toggleAuthMode()">Sign up here</span>` 
+                : `Already have an account? <span onclick="toggleAuthMode()">Login here</span>`;
+        }
+
+        // Simulate Login
+        function handleLogin(e) {
+            e.preventDefault();
+            alert(isLoginMode ? 'Logged in successfully!' : 'Account created successfully!');
+            closeModal();
+            // Remove the overlay to allow selling
+            document.getElementById('sellOverlay').style.display = 'none';
+        }
+
+        // Close modal if clicked outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
